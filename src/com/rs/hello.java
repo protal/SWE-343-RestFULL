@@ -42,12 +42,40 @@ public class hello {
 		for(DBObject object : myList)
 		{
 			xml += "<book>";
-				xml += "<id_book>"+object.get("id_book").toString()+"</id_book>";
 				xml += "<name>"+object.get("name").toString()+"</name>";
-				xml += "<publisher>"+object.get("publisher").toString()+"</publisher>";
-				xml += "<book_number>"+object.get("book_number").toString()+"</book_number>";
-				xml += "<discovery>"+object.get("discovery").toString()+"</discovery>";
-				xml += "<total_book>"+object.get("total_book").toString()+"</total_book>";
+				xml += "<type>"+object.get("type").toString()+"</type>";
+				xml += "<price>"+object.get("price").toString()+"</price>";
+				xml += "<days>"+object.get("days").toString()+"</days>";
+				xml += "<charge>"+object.get("charge").toString()+"</charge>";
+				xml += "<total>"+object.get("total").toString()+"</total>";
+			xml += "</book>";
+		}
+		xml += "</books>";
+		return xml;
+		
+	}
+	@GET
+	@Path("/findname") 
+	@Produces(MediaType.TEXT_XML)  
+	public String sayFindAllBook(){
+		DB db = new connect().mongo();
+		DBCollection collection = db.getCollection("book");
+
+		DBCursor cursor = collection.find();
+		
+		List<DBObject> myList = cursor.toArray(); 
+		
+		String xml = "<?xml version=\"1.0\"?>";
+		xml += "<books>";
+		for(DBObject object : myList)
+		{
+			xml += "<book>";
+				xml += "<name>"+object.get("name").toString()+"</name>";
+				xml += "<type>"+object.get("type").toString()+"</type>";
+				xml += "<price>"+object.get("price").toString()+"</price>";
+				xml += "<days>"+object.get("days").toString()+"</days>";
+				xml += "<charge>"+object.get("charge").toString()+"</charge>";
+				xml += "<total>"+object.get("total").toString()+"</total>";
 			xml += "</book>";
 		}
 		xml += "</books>";
