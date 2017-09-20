@@ -37,11 +37,13 @@ public class hello {
 		
 		List<DBObject> myList = cursor.toArray(); 
 		
+
 		String xml = "<?xml version=\"1.0\"?>";
-		xml += "<books>";
+		xml += "<return>";
 		for(DBObject object : myList)
 		{
 			xml += "<book>";
+				xml += "<id>"+object.get("_id").toString()+"</id>";
 				xml += "<name>"+object.get("name").toString()+"</name>";
 				xml += "<type>"+object.get("type").toString()+"</type>";
 				xml += "<price>"+object.get("price").toString()+"</price>";
@@ -50,7 +52,10 @@ public class hello {
 				xml += "<total>"+object.get("total").toString()+"</total>";
 			xml += "</book>";
 		}
-		xml += "</books>";
+		xml += "</return>";
+		
+		System.out.println(xml);
+		
 		return xml;
 		
 	}
@@ -66,10 +71,11 @@ public class hello {
 		List<DBObject> myList = cursor.toArray(); 
 		
 		String xml = "<?xml version=\"1.0\"?>";
-		xml += "<books>";
+		xml += "<return>";
 		for(DBObject object : myList)
 		{
 			xml += "<book>";
+				xml += "<id>"+object.get("_id").toString()+"</id>";
 				xml += "<name>"+object.get("name").toString()+"</name>";
 				xml += "<type>"+object.get("type").toString()+"</type>";
 				xml += "<price>"+object.get("price").toString()+"</price>";
@@ -78,7 +84,10 @@ public class hello {
 				xml += "<total>"+object.get("total").toString()+"</total>";
 			xml += "</book>";
 		}
-		xml += "</books>";
+		xml += "</return>";
+		
+		System.out.println(xml);
+		
 		return xml;
 		
 	}
