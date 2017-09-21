@@ -21,11 +21,12 @@ public class createbook {
 	@POST
 	@Path("/create") 
 	@Produces(MediaType.TEXT_PLAIN)  
-	public String create(@FormParam("name") String name, @FormParam("version") String version,@FormParam("price") String price,@FormParam("charge") String charge,@FormParam("days") String days,@FormParam("total") String total) {   
+	public String create(@FormParam("_id") String _id, @FormParam("name") String name, @FormParam("version") String version,@FormParam("price") String price,@FormParam("charge") String charge,@FormParam("days") String days,@FormParam("total") String total) {   
 		
 		DB db = new connect().mongo();
 		DBCollection collection = db.getCollection("book");
 		
+		System.out.println(_id);
 		System.out.println(name);
 		System.out.println(version);
 		System.out.println(price);
@@ -35,6 +36,7 @@ public class createbook {
 		
 
 		BasicDBObject document = new BasicDBObject();
+		document.put("_id", _id);
 		document.put("name", name);
 		document.put("version", version);
 		document.put("price", price);
