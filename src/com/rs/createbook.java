@@ -33,7 +33,7 @@ public class createbook {
 		System.out.println(days);
 		System.out.println(total);
 		
-		System.out.println("dbrhtwehjqjj	j");
+
 		BasicDBObject document = new BasicDBObject();
 		document.put("name", name);
 		document.put("version", version);
