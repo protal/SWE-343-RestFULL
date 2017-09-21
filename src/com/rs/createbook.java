@@ -16,9 +16,9 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-@Path("/create") 
+@Path("/createbook") 
 public class createbook {
-	@POST
+	@GET
 	@Path("/create") 
 	@Produces(MediaType.TEXT_PLAIN)  
 	public String create(@FormParam("_id") String _id, @FormParam("name") String name, @FormParam("version") String version,@FormParam("price") String price,@FormParam("charge") String charge,@FormParam("days") String days,@FormParam("total") String total) {   
